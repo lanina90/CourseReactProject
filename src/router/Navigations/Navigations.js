@@ -31,7 +31,6 @@ const Navigations = () => {
       {windowWidth > 768 && windowWidth < 1024 ?
         <NavLink to="/popMovies"><MdFlutterDash size={'24'}/>Popular Movie</NavLink> :null}
       <p>popular genders</p>
-      <p>menu</p>
       <NavLink to="/genre/action"><GiPistolGun size={'24'}/>Action</NavLink>
       <NavLink to="/genre/adventure"><SiOpenstreetmap size={'24'}/>Adventure</NavLink>
       <NavLink to="/genre/comedy"><BsEmojiSmile size={'24'}/>Comedy</NavLink>

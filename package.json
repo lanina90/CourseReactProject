@@ -1,5 +1,6 @@
 {
   "name": "course-work",
+  "homepage": "https://movie-magic-one.vercel.app/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
