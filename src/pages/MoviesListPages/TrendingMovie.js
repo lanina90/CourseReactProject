@@ -29,7 +29,6 @@ const TrendingMovie = () => {
       </Helmet>
       <div className={styles.container}>
         <h1>Now Trending: Movies You Can&lsquo;t Miss</h1>
-        <p>Explore the most-watched movies making waves around the globe.</p>
         <div className={styles.wrapper}>
           {
             movies?.results.map((movie) =>

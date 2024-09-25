@@ -31,8 +31,6 @@ const CurrentGenre = () => {
 
   const pageTitle = genreTitles[genre].title || '';
   const description = genreTitles[genre].description || '';
-  const text = genreTitles[genre].text || '';
-  const paragraphs = text.split('\n');
 
   return (
     <>
@@ -42,7 +40,6 @@ const CurrentGenre = () => {
       </Helmet>
       <div className={styles.container}>
         <h1>{pageTitle}</h1>
-        {paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
         <div className={style.wrapper}>
           {
             currGenre?.results.map((genre) =>

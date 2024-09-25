@@ -31,8 +31,6 @@ const PopularMoviesPage = () => {
 
       <div className={styles.container}>
         <h1>Popular Movies</h1>
-        <p>Curated collection of popular movies: high-rated, diverse genres, captivating stories. Explore beloved
-          films!</p>
         <div className={styles.wrapper}>
           {
             dataMovies?.map((film) =>

@@ -28,7 +28,6 @@ const FreshMoviePage = () => {
       </Helmet>
       <div className={styles.container}>
         <h1>Fresh movies</h1>
-        <p>New movies and series in excellent quality: legal,safe, without ads</p>
         <div className={styles.wrapper}>
           {
             movies?.results.map((movie) =>
