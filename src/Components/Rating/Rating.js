@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import ReactStars from 'react-rating-stars-component/dist/react-stars';
-import styles from './RatingComponent.module.scss';
+import styles from './styles.module.scss';
 import {useSelector} from 'react-redux';
 import {useWindowWidth} from "../../hooks/useWindowWidth";
 
 
-const RatingComponent = ({ movieId, onChange }) => {
+const Rating = ({ movieId, onChange }) => {
 
   const windowWidth = useWindowWidth();
   const {ratings}  = useSelector((state) => state.ratings);
@@ -44,4 +44,4 @@ const RatingComponent = ({ movieId, onChange }) => {
   );
 };
 
-export default RatingComponent;
+export default Rating;

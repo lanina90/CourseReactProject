@@ -13,6 +13,7 @@ const Search = () => {
   const [clearSearch, setClearSearch] = useState(true);
   const dispatch = useDispatch();
   const [findMovie, setFindMovie] = useState([]);
+
   const searchMovie = (foundItem) => foundItem &&
     movies.filter((item) => item.original_title.toLowerCase().includes(foundItem.toLowerCase()));
 

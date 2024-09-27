@@ -1,6 +1,6 @@
 import React from 'react';
 import style from '../../pages/ActorPage/ActorPage.module.scss';
-import CustomButton from '../Button/CustomButton';
+import CustomButton from '../Buttons/Button/CustomButton';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import { NavLink } from 'react-router-dom';

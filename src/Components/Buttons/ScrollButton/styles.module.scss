@@ -1,0 +1,18 @@
+
+
+.arrow {
+  color: rgba(213, 8, 57, 0.62);
+  position: fixed;
+  bottom: 150px;
+  z-index: 1000;
+  left: 50px;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+
+  &:hover {
+    cursor: pointer;
+    color: #c05a11;
+  }
+}

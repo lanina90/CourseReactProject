@@ -6,7 +6,7 @@ import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 import styles from './ActionBar.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import RatingComponent from '../RatingComponent/RatingComponent';
+import Rating from '../Rating/Rating';
 import MoviePlayerModal from '../MoviePlayerModal/MoviePlayerModal';
 import {handleRatingChanged, handleToggleFavorite, handleToggleWatchList} from '../../utils/helperFunctions/ActionsFn';
 
@@ -66,7 +66,7 @@ const ActionBar = ({ movieId, movie }) => {
             data-tooltip-id="rate"
             data-tooltip-content="Rate it"
           />}/>
-        {showRating &&  <RatingComponent
+        {showRating &&  <Rating
           onChange={(rating) => handleRatingChanged(movieId, userId, dispatch, setShowRating, rating)}
           movieId={movieId}
 

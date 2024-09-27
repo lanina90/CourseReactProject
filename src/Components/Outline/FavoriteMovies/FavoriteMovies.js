@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import style from '../Outline.module.scss';
 import CircleRating from '../../CircleRating/CircleRating';
-import CustomButton from '../../Button/CustomButton';
+import CustomButton from '../../Buttons/Button/CustomButton';
 import { useDispatch } from 'react-redux';
 import { fetchFavorites } from '../../../redux/slices/favoriteSlice';
 

@@ -22,10 +22,13 @@ $header-color-lightMode: #000000;
 $input-color-darkMode: #ffffff;
 $input-color-lightMode: #000000;
 
+*{
+  box-sizing: border-box;
+}
+
 :root {
+  --color-default: grey;
   --color-dark-red: rgba(210, 9, 9, 0.99);
-
-
   --body-background-dark: #171B1E;
   --body-background-light: #{$colorBgLight};
   --body-background-default: var(#{--body-background-dark});

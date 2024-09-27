@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import style from './MoviePage.module.scss';
 import axios from 'axios';
 import ActionBar from '../../Components/Action Bar/ActionBar';
-import CustomButton from '../../Components/Button/CustomButton';
+import CustomButton from '../../Components/Buttons/Button/CustomButton';
 import Loader from '../../Loader/Loader';
 import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';

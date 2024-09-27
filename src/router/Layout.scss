@@ -24,20 +24,16 @@ body {
 }
 
 .containerMain {
-  width: calc(100%);
+  width: 100%;
   padding: $size;
   color: var(--text-color-default);
   flex: 1;
+
+  @media screen and ( min-width: 768px)  {
+    width: 70vh;
+  }
 }
 
-.containerSideBar {
-  display: flex;
-  flex-direction: column;
-  border-left: 1px solid darken($colorDefault, 25%);
-  padding-top: $size;
-  padding-left: $size;
-  width: 250px;
-}
 
 .footer {
   height: $heightFooter;
@@ -47,23 +43,6 @@ body {
   color: var(--text-color-default);
   font-size: $size * 2;
   border-top: $footerWidthBorder solid darken($colorDefault, 25%);
-}
-
-.topArrow {
-  color: rgba(213, 8, 57, 0.62);
-  position: fixed;
-  bottom: 150px;
-  z-index: 1000;
-  left: 50px;
-  animation-name: example;
-  animation-duration: 4s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-
-  &:hover {
-    cursor: pointer;
-    color: #c05a11;
-  }
 }
 
 .headerMain {

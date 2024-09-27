@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CircleRating from '../CircleRating/CircleRating';
 import { useNavigate } from 'react-router';
-import styles from '../Button/CustomButton.module.scss';
+import styles from '../Buttons/Button/CustomButton.module.scss';
 import {useWindowWidth} from "../../hooks/useWindowWidth";
 
 const SliderWithWatchBtn = ({ name, category, id, bg, rating, displayAsPercentage }) => {

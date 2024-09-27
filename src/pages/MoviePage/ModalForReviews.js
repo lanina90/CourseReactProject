@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useEffect, useState } from 'react';
-import CustomButton from '../../Components/Button/CustomButton';
+import CustomButton from '../../Components/Buttons/Button/CustomButton';
 import style from './ModalForReviews.module.scss';
 import {useWindowWidth} from "../../hooks/useWindowWidth";
 

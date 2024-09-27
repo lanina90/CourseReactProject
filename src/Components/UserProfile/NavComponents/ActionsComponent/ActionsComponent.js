@@ -5,7 +5,7 @@ import styles from '../../UserProfile.module.scss';
 import {useDispatch, useSelector} from 'react-redux';
 import {deleteFavorite} from '../../../../redux/slices/favoriteSlice';
 import {deleteFromWatchList} from '../../../../redux/slices/watchListSlice';
-import RatingComponent from '../../../RatingComponent/RatingComponent';
+import Rating from '../../../Rating/Rating';
 import {deleteRatings} from '../../../../redux/slices/userRatingsSlice';
 import {handleRatingChanged, handleToggleFavorite} from '../../../../utils/helperFunctions/ActionsFn';
 
@@ -47,7 +47,7 @@ const ActionsComponent = ({movieId, source}) => {
           />}/>
         <p>Rate It</p>
         {showRating && (
-          <RatingComponent
+          <Rating
             onChange={(rating) => handleRatingChanged(movieId, userId, dispatch, setShowRating, rating)}
             movieId={movieId}
           />
