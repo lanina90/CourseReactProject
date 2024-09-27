@@ -6,7 +6,7 @@ const OverviewSection = ({ movie,windowWidth }) => {
   return (
     <section className={style.overview}>
       <div className={style.rating}>
-        <p>User Score</p>
+
         {windowWidth >= 360 && windowWidth < 768 ?  <CircleRating
             rating={movie.vote_average * 10}
             size={90}

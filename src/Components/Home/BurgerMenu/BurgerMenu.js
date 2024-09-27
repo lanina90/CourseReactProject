@@ -5,6 +5,7 @@ import { useAuth } from '../../../hooks/useAuth';
 import ProfileSection from '../../../router/Navigations/ProfileSection';
 import { itemGenres } from '../../../constants/data';
 import { loadData } from '../../../utils/helperFunctions/loadUserDataFromFB';
+import Navigations from "../../../router/Navigations/Navigations";
 
 
 const BurgerMenu = ({ items }) => {
@@ -91,11 +92,12 @@ const BurgerMenu = ({ items }) => {
         <div className={style.menu}>
           <ul className={style.items} style={styleModal}>
             <NavLink to={'/'} >Home</NavLink>
-            <p>Movies</p>
-            {links}
-            <p>Genres</p>
-            {genres}
-            <ProfileSection/>
+            <Navigations/>
+            {/*<p>Movies</p>*/}
+            {/*{links}*/}
+            {/*<p>Genres</p>*/}
+            {/*{genres}*/}
+            {/*<ProfileSection/>*/}
           </ul>
         </div>
       </div>

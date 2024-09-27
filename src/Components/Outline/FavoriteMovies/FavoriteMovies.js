@@ -54,7 +54,7 @@ const FavoriteMovies = ({ userId, isLoading, favorites }) => {
         </div>
 
         <div className={style.btn}>
-          <CustomButton name={'see more'} path={'/u/favorites'}></CustomButton>
+          <CustomButton name={'More'} path={'/u/favorites'}></CustomButton>
         </div>
       </section>
     );

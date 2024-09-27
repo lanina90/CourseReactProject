@@ -6,156 +6,37 @@ $footerWidthBorder: $size * 0.1;
 $navWidth: $size * 25;
 $sidBarWidth: $size * 25;
 
+
 * {
   padding: 0;
   margin: 0;
 }
-body{
+
+body {
   background-color: var(--body-background-default);
-  color:#050505;
+  color: #050505;
 }
 
 .containerTopLayout {
   display: flex;
   justify-content: space-between;
-  //background-color: $colorBg;
-  //color: $colorDefault;
   color: var(--text-color-default);
-}
-
-.containerNav {
-  width: $navWidth;
-  min-height: calc(100vh - $heightFooter - $footerPaddingTop - $footerWidthBorder);
-  display: flex;
-  flex-direction: column;
-  border-right: 1px solid darken($colorDefault, 25%);
-  font-family: Arial, sans-serif;
-  font-weight: bold;
-  user-select: none;
-  @media (min-width: 768px) and (max-width: 1024px) {
-    width:150px;
-  }
-  @media (min-width: 360px) and (max-width: 768px) {
-    opacity: 0;
-    width: 0;
-    overflow: hidden;
-  }
-  @media (min-width: 1024px) and (max-width: 1200px) {
-    width:120px;
-  }
-
-  & > a {
-    color: var(--text-color-default);
-    margin-left: $size * 2;
-    margin-top: $size * 2;
-    font-size: $size * 1.4;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    @media (min-width: 768px) and (max-width: 1024px) {
-      font-size: 13px;
-    }
-    @media (min-width: 1024px) and (max-width: 1200px) {
-      font-size: 11px;
-    }
-    h1 {
-      font-size: $size * 2;
-      color:$logo-color;
-      letter-spacing: $size * 0.1;
-      @media (min-width: 768px) and (max-width: 1024px) {
-        font-size: 13px;
-      }
-      @media (min-width: 1024px) and (max-width: 1200px) {
-        font-size: 12px;
-      }
-
-      span {
-        color: $colorBtnBg;
-      }
-    }
-
-    &:hover {
-      color: $colorBtn;
-      transition: 0.2s;
-    }
-
-    & svg {
-      margin-right: 10px;
-      font-size: 20px;
-      fill: $colorDefault;
-    }
-  }
-
-  & > .active {
-    color: $colorBtn;
-    cursor: default;
-    border-right: 3px solid $colorBtnBg;
-
-    &:first-child {
-      border: none;
-      @media (min-width: 1024px) and (max-width: 1200px) {
-        display: flex;
-        flex-direction: column;
-      }
-
-    }
-
-    & > svg {
-      fill: $colorBtnBg;
-    }
-  }
-
-  p {
-    margin-left: $size * 2;
-    margin-top: $size * 4;
-    text-transform: uppercase;
-    font-size: $size * 1.4;
-    @media (min-width: 768px) and (max-width: 1024px) {
-     font-size: 12px;
-    }
-  }
 }
 
 .containerMain {
-  width: calc(100% - $navWidth - $sidBarWidth);
+  width: calc(100%);
   padding: $size;
   color: var(--text-color-default);
-  @media (min-width: 1024px) and (max-width: 1280px) {
-    width:700px ;
-  }
-  @media (min-width: 768px) and (max-width: 1024px) {
-    width:575px ;
-  }
-  @media (min-width: 360px) and (max-width: 768px) {
-   width: 100%;
-    padding: 0;
-  }
-  @media (min-width: 1024px) and (max-width: 1200px) {
-    width: 650px;
-  }
-
+  flex: 1;
 }
 
 .containerSideBar {
-  width: $sidBarWidth;
   display: flex;
   flex-direction: column;
   border-left: 1px solid darken($colorDefault, 25%);
   padding-top: $size;
   padding-left: $size;
-  @media (min-width: 1024px) and (max-width: 1280px) {
-    width:200px ;
-  }
-  @media (min-width: 768px) and (max-width: 1024px) {
-   opacity: 0;
-    width: 0;
-    overflow: hidden;
-  }
-  @media (min-width: 360px) and (max-width: 768px) {
-    opacity: 0;
-    width: 0;
-    overflow: hidden;
-  }
+  width: 250px;
 }
 
 .footer {
@@ -167,7 +48,8 @@ body{
   font-size: $size * 2;
   border-top: $footerWidthBorder solid darken($colorDefault, 25%);
 }
-.topArrow{
+
+.topArrow {
   color: rgba(213, 8, 57, 0.62);
   position: fixed;
   bottom: 150px;
@@ -177,40 +59,24 @@ body{
   animation-duration: 4s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
-  &:hover{
+
+  &:hover {
     cursor: pointer;
     color: #c05a11;
   }
 }
-.headerMain{
+
+.headerMain {
   background-color: #424c43;
 }
 
 @keyframes example {
-  from {color: rgba(30, 2, 8, 0.99);}
-  to {color : rgba(213, 8, 57, 0.62);}
+  from {
+    color: rgba(30, 2, 8, 0.99);
+  }
+  to {
+    color: rgba(213, 8, 57, 0.62);
+  }
 }
 
-:root{
-  --body-background-dark:#{$colorBg};
-  --body-background-light:#{$colorBgLight};
-  --body-background-default:var(#{--body-background-dark});
-  --components-background-dark:#{$components-background-dark};
-  --components-background-light:#{$components-background-light};
-  --components-background-default:var(#{--components-background-dark});
-  --text-color-dark:#{$text-color-dark};
-  --text-color-light:#{$text-color-light};
-  --text-color-default:var(#{--text-color-dark});
-  --btn-color-hover-dark:#{$btn-color-hover-dark};
-  --btn-color-hover-light:#{$btn-color-hover-light} ;
-  --btn-color-hover-default:#{$btn-color-hover-dark} ;
-  --color-header-dark:#{$header-color-darkMode};
-  --color-header-light:#{$header-color-lightMode};
-  --color-header-default:var(#{--color-header-dark});
-  --color-input-dark:#{$input-color-darkMode};
-  --color-input-light:#{$input-color-lightMode};
-  --color-input-default:var(#{--color-input-dark});
 
-
-
-}

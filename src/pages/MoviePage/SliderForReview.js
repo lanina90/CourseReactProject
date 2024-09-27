@@ -2,21 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import './SliderForReview.scss';
 import style from '../../Components/Home/HomeLayout.module.scss';
+import {useWindowWidth} from "../../hooks/useWindowWidth";
 
 
 const SliderForReview = (props) => {
+  const windowWidth = useWindowWidth();
 
   const { reviews } = props;
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowWidth(window.innerWidth);
-    }
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   return (  <>
     {windowWidth >= 360 && windowWidth < 768 ?

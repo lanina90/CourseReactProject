@@ -6,6 +6,7 @@ import Modal from '@mui/material/Modal';
 import { useEffect, useState } from 'react';
 import CustomButton from '../../Components/Button/CustomButton';
 import style from './ModalForReviews.module.scss';
+import {useWindowWidth} from "../../hooks/useWindowWidth";
 
 const styleModal = {
   position: 'absolute',
@@ -36,17 +37,7 @@ const stylePhoneModal = {
 
 export default function ModalForReviews({ callback, open, value, setValue, placeholder, movie, reviews, sendReview }) {
 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowWidth(window.innerWidth);
-    }
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
+  const windowWidth = useWindowWidth();
 
   return (
     <div className={style.modal}>

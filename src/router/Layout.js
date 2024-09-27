@@ -16,6 +16,8 @@ import { BsFilm } from 'react-icons/bs';
 import BurgerMenu from '../Components/Home/BurgerMenu/BurgerMenu';
 import Navigations from './Navigations/Navigations';
 import { itemMovies } from '../constants/data';
+import {useWindowWidth} from "../hooks/useWindowWidth";
+import {useFetchMovies} from "../hooks/useFetchMovies";
 
 
 const Layout = () => {
@@ -26,12 +28,13 @@ const Layout = () => {
   const favorites = useSelector((state) => state.favorites.favorites);
   const isLoading = useSelector((state) => state.favorites.isLoading);
   const loading = useSelector((store) => store.loading);
+
+  const fetchMovies = useFetchMovies('popularMovie')
   const dispatch = useDispatch();
 
-  const getPopMovies = async () => {
-    dispatch(fetchMovies({ type: 'popularMovie' }));
-  };
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const getPopMovies = () => fetchMovies('popularMovie')
+
+  const windowWidth = useWindowWidth();
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -54,17 +57,12 @@ const Layout = () => {
       setShowButton(false);
     }
   };
+
   const [theme, setTheme] = useState('dark');
   const changeTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
   useEffect(() => {
-
-    function handleResize() {
-      setWindowWidth(window.innerWidth);
-    }
-
-    window.addEventListener('resize', handleResize);
     const root = document.querySelector(':root');
 
     const components = ['body-background','components-background','text-color','btn-color-hover','color-header','color-input'];
@@ -74,8 +72,6 @@ const Layout = () => {
         `var(--${component}-${theme})`,
       );
     });
-
-    return () => window.removeEventListener('resize', handleResize);
   },[theme]);
 
   return (
@@ -83,37 +79,35 @@ const Layout = () => {
       {windowWidth >= 768 ?
       loading ? <Loader></Loader> : <>
         <section id={'mainContent'} className={'containerTopLayout'}>
-          <nav className={'containerNav'}>
-            <Navigations/>
-          </nav>
+          <Navigations/>
           <main className={'containerMain'}>
             <Outlet/>
-            {showButton && <ScrollButton></ScrollButton>}
+            {showButton && <ScrollButton/>}
           </main>
-          <section className={'containerSideBar'}>
-            <Search/>
-            <CustomizedSwitches callback={changeTheme}></CustomizedSwitches>
-            <PopularMovies/>
-            <FavoriteMovies
-              userId={userId}
-              favorites={favorites}
-              isLoading={isLoading}
-            />
-          </section>
-
+          {windowWidth > 1280 &&
+            <aside className={'containerSideBar'}>
+              <Search/>
+              <CustomizedSwitches callback={changeTheme}></CustomizedSwitches>
+              <PopularMovies/>
+              <FavoriteMovies
+                userId={userId}
+                favorites={favorites}
+                isLoading={isLoading}
+              />
+            </aside>
+          }
         </section>
-        {/*<footer className={'footer'}>2023 - mock footer for course react</footer>*/}
       </>
-        :  <main className={'containerMain'}>
+        : <main className={'containerMain'}>
           <div className={style.header + ' ' + style.headerMain}>
             {windowWidth >= 360 && windowWidth < 768 ? <div className={style.logo}>
                 <Search></Search>
                 <NavLink className={style.logoHeader} to="/"><BsFilm size={'20'}/><h1>MovieMagic</h1></NavLink>
-                <BurgerMenu title={'Movies'} items={itemMovies}></BurgerMenu>
+                <BurgerMenu title={'Movies'} items={itemMovies}/>
               </div>
               :
               <h1>watch movies online</h1>}
-            {windowWidth > 768 && windowWidth < 1024 ? <Search></Search> : null}
+            {windowWidth > 768 && windowWidth < 1024 ? <Search/> : null}
           </div>
           <Outlet/>
         </main>}

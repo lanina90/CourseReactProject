@@ -17,6 +17,7 @@ import ModalForReviews from './ModalForReviews';
 import {fetchWatchList} from "../../redux/slices/watchListSlice";
 import {useAuth} from "../../hooks/useAuth";
 import {fetchRatings} from "../../redux/slices/userRatingsSlice";
+import {useWindowWidth} from "../../hooks/useWindowWidth";
 
 
 const MoviePage = () => {
@@ -28,7 +29,7 @@ const MoviePage = () => {
   const dispatch = useDispatch();
   const {reviews, status} = useSelector((state) => state.reviews);
   const [openModal, setOpenModal] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const windowWidth = useWindowWidth();
   const ratings = useSelector((state) => state.ratings.ratings);
   const handleOpen = () => setOpenModal(true);
   const handleClose = () => setOpenModal(false);
@@ -47,12 +48,6 @@ const MoviePage = () => {
     dispatch(fetchRatings(userId));
 
     fetchMovie();
-
-    function handleResize() {
-      setWindowWidth(window.innerWidth);
-    }
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
   }, [movieId, ratings]);
 
   const sendReviewHandler = (review) => {

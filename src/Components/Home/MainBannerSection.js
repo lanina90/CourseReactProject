@@ -3,8 +3,13 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { NavLink } from 'react-router-dom';
 import style from './HomeLayout.module.scss';
 import SliderWithWatchBtn from '../SliderItems/SliderWithWatchBtn';
+import {useWindowWidth} from "../../hooks/useWindowWidth";
+import {useSelector} from "react-redux";
 
-const MainBannerSection = ({ discover, windowWidth }) => {
+const MainBannerSection = () => {
+  const discover = useSelector((state) => state.movies.discover);
+  const windowWidth = useWindowWidth();
+
   return (
     <>
       <Swiper
@@ -27,7 +32,7 @@ const MainBannerSection = ({ discover, windowWidth }) => {
                 displayAsPercentage={true}
                 name={movie.title}
                 bg={movie.backdrop_path}
-                id={movie.id}></SliderWithWatchBtn>
+                id={movie.id}/>
             </NavLink>
           </SwiperSlide>
         )}

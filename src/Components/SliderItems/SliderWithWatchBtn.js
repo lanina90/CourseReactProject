@@ -2,23 +2,16 @@ import React, { useEffect, useState } from 'react';
 import CircleRating from '../CircleRating/CircleRating';
 import { useNavigate } from 'react-router';
 import styles from '../Button/CustomButton.module.scss';
+import {useWindowWidth} from "../../hooks/useWindowWidth";
 
 const SliderWithWatchBtn = ({ name, category, id, bg, rating, displayAsPercentage }) => {
   const navigate = useNavigate();
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowWidth(window.innerWidth);
-    }
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  });
+  const windowWidth = useWindowWidth();
 
   const watchOnClickHandler = () => {
     navigate(`/movie/${id}`);
   };
+
   return (
     <div
       style={{
@@ -26,7 +19,6 @@ const SliderWithWatchBtn = ({ name, category, id, bg, rating, displayAsPercentag
         rgba(0,0,0,0)), url(https://image.tmdb.org/t/p/original${bg})`
       }}>
       <div className="userScore">
-        <p>User Score</p>
         {windowWidth >= 360 && windowWidth < 600 ? <CircleRating
             rating={rating}
             displayAsPercentage={displayAsPercentage}
@@ -42,7 +34,7 @@ const SliderWithWatchBtn = ({ name, category, id, bg, rating, displayAsPercentag
         <button
           className={styles.link}
           onClick={watchOnClickHandler}>
-          Watch
+          More
         </button>
       </div>
     </div>

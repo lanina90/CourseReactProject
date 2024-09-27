@@ -36,8 +36,6 @@ const Search = () => {
     }
   }, [clearSearch]);
 
-
-  const imageBaseUrl = 'https://image.tmdb.org/t/p/';
   return (
     <div className={style.container}>
       <div className={`${style.autocompleted} ${isModal ? style.openModal : null}`}

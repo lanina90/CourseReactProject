@@ -11,7 +11,7 @@ import { loadData } from '../../utils/helperFunctions/loadUserDataFromFB';
 const ProfileSection = () => {
   const dispatch = useDispatch();
   const { isAuth, isAdmin } = useAuth();
-  const { id } = useAuth();
+  const { id, userName: user } = useAuth();
   const [ userData, setUserData] = useState(null);
   const userName = userData && userData.userName;
 

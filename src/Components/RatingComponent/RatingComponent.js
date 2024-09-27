@@ -2,26 +2,18 @@ import React, { useEffect, useState } from 'react';
 import ReactStars from 'react-rating-stars-component/dist/react-stars';
 import styles from './RatingComponent.module.scss';
 import {useSelector} from 'react-redux';
+import {useWindowWidth} from "../../hooks/useWindowWidth";
 
 
 const RatingComponent = ({ movieId, onChange }) => {
 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const {ratings,isRatingLoading}  = useSelector((state) => state.ratings);
+  const windowWidth = useWindowWidth();
+  const {ratings}  = useSelector((state) => state.ratings);
 
   const userRatingForThisMovie = ratings?.find(
     (rating) => parseInt(rating.movieId) === parseInt(movieId)
   )?.rating || 0;
 
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowWidth(window.innerWidth);
-    }
-    window.addEventListener('resize', handleResize);
-
-    return () =>  window.addEventListener('resize', handleResize);
-  });
 
   return (
     <div className={styles.stars}>

@@ -14,7 +14,7 @@ const PopularMovies = () => {
     <>
       <div className={style.container}>
         <h3>POPULAR MOVIES </h3>
-        {popMovie && popMovie.slice(0, 4).map((movie) =>
+        {popMovie && popMovie.slice(0, 2).map((movie) =>
           <NavLink
             key={movie.id}
             to={`/movie/${encodeURIComponent(movie.title.replace(/[\s:]/g, '-').toLowerCase())}`}
@@ -42,7 +42,7 @@ const PopularMovies = () => {
           </NavLink>)}
       </div>
       <div className={style.btn}>
-        <CustomButton name={'see more'} path={'popMovies'}></CustomButton>
+        <CustomButton name={'More'} path={'popMovies'}></CustomButton>
       </div>
 
     </>
