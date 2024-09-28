@@ -8,14 +8,12 @@ import reviews from './slices/reviewsSlice';
 import credits from './slices/actorCreditsSlice';
 import userReviews from './slices/userReviewsSlice';
 import { searchReducer } from '../Components/Search/SearchReducer';
-import { authReducer } from '../Components/Auth/AuthReducer';
 import { loaderReducer } from '../Loader/LoaderReducer';
 import filters from './slices/filtersSlice';
 
 
 export default combineReducers({
     user,
-    isAuth: authReducer,
     movies,
     searchMovie: searchReducer,
     favorites,

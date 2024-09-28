@@ -12,6 +12,7 @@ const AuthForm = () => {
   const [isRegister, setIsRegister] = useState(false);
   const navigate = useNavigate();
   const [error, setError] = useState('');
+
   const toggleFormMode = () => {
     setIsRegister(!isRegister);
   };

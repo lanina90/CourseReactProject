@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import style from '../Outline.module.scss';
+import style from '../styles.module.scss';
 import CircleRating from '../../CircleRating/CircleRating';
 import CustomButton from '../../Buttons/Button/CustomButton';
 import { useDispatch } from 'react-redux';
@@ -8,7 +8,7 @@ import { fetchFavorites } from '../../../redux/slices/favoriteSlice';
 
 const FavoriteMovies = ({ userId, isLoading, favorites }) => {
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (isLoading === 'idle' && userId) {
@@ -16,10 +16,8 @@ const FavoriteMovies = ({ userId, isLoading, favorites }) => {
     }
   }, [userId, isLoading, favorites]);
 
-
-
     return (
-      <section>
+      <>
         <div className={style.container}>
           <h3>FAVORITE</h3>
           {isLoading === 'loading' && <div>Loading...</div>}
@@ -36,7 +34,6 @@ const FavoriteMovies = ({ userId, isLoading, favorites }) => {
                   backgroundSize: 'cover'
                 }}
                 className={style.wrapperBox}>
-
                 <div className={style.wrapperAbout}>
                   <div>
                     <h3 className={style.item}>{movie?.movieInfo.original_title}</h3>
@@ -56,7 +53,7 @@ const FavoriteMovies = ({ userId, isLoading, favorites }) => {
         <div className={style.btn}>
           <CustomButton name={'More'} path={'/u/favorites'}></CustomButton>
         </div>
-      </section>
+      </>
     );
   }
 ;

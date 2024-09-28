@@ -1,6 +1,6 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { collection, doc, getDoc, getDocs, getFirestore, query, setDoc, where } from 'firebase/firestore';
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword} from 'firebase/auth';
+import {collection, doc, getDoc, getDocs, getFirestore, query, setDoc, where} from 'firebase/firestore';
 
 
 const initialState = {
@@ -12,12 +12,32 @@ const initialState = {
   date: null
 };
 
+export const fetchUserData = createAsyncThunk(
+  'user/fetchUserData',
+  async (userId, thunkAPI) => {
+    try {
+      const db = getFirestore();
+      const userDoc = await getDoc(doc(db, 'users', userId));
+      const userData = userDoc.data();
+
+      return {
+        email: userData.email,
+        id: userData.id,
+        userName: userData.userName,
+        date: userData.date,
+      };
+    } catch (error) {
+      return thunkAPI.rejectWithValue({message: 'Failed to fetch user data'});
+    }
+  }
+);
+
 export const loginUser = createAsyncThunk(
   'user/login',
-  async ({ email, password }, thunkAPI) => {
+  async ({email, password}, thunkAPI) => {
     try {
       const auth = getAuth();
-      const { user } = await signInWithEmailAndPassword(auth, email, password);
+      const {user} = await signInWithEmailAndPassword(auth, email, password);
       const db = getFirestore();
       const userDoc = await getDoc(doc(db, 'users', user.uid));
       const userData = userDoc.data();
@@ -33,17 +53,18 @@ export const loginUser = createAsyncThunk(
     } catch (error) {
       const errorCode = error.code;
       let errorMessage = error.message;
+
       if (errorCode === 'auth/user-not-found') {
         errorMessage = 'User not found. Please register.';
       }
-      return thunkAPI.rejectWithValue({ message: errorMessage });
+      return thunkAPI.rejectWithValue({message: errorMessage});
     }
   }
 );
 
 export const registerUser = createAsyncThunk(
   'user/register',
-  async ({ userName, email, password }, thunkAPI) => {
+  async ({userName, email, password}, thunkAPI) => {
     try {
       const auth = getAuth();
       const db = getFirestore();
@@ -54,7 +75,7 @@ export const registerUser = createAsyncThunk(
         throw new Error('This username is already in use. Please try another one.');
       }
 
-      const { user } = await createUserWithEmailAndPassword(auth, email, password);
+      const {user} = await createUserWithEmailAndPassword(auth, email, password);
 
       await setDoc(doc(db, 'users', user.uid), {
         email: user.email,
@@ -72,10 +93,11 @@ export const registerUser = createAsyncThunk(
       };
     } catch (error) {
       let errorMessage = error.message;
+
       if (error.code === 'auth/email-already-in-use') {
         errorMessage = 'This email is already in use. Please try another one.';
       }
-      return thunkAPI.rejectWithValue({ message: errorMessage });
+      return thunkAPI.rejectWithValue({message: errorMessage});
     }
   }
 );
@@ -117,10 +139,21 @@ export const userSlice = createSlice({
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.error = action.error.message;
+      })
+      .addCase(fetchUserData.fulfilled, (state, action) => {
+        state.email = action.payload.email;
+        state.token = action.payload.token;
+        state.id = action.payload.id;
+        state.admin = action.payload.admin;
+        state.userName = action.payload.userName;
+        state.date = action.payload.date;
+      })
+      .addCase(fetchUserData.rejected, (state, action) => {
+        state.error = action.error.message;
       });
   },
 });
 
-export const { removeUser } = userSlice.actions;
+export const {removeUser} = userSlice.actions;
 export const selectUserStatus = (state) => state.user.status;
 export default userSlice.reducer;

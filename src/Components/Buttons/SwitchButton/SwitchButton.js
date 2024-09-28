@@ -1,5 +1,5 @@
 import { FormControlLabel, FormGroup } from '@mui/material';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 import './switchedThemeBtn.scss';
@@ -51,13 +51,33 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-export default function CustomizedSwitches(props) {
- const { callback } = props;
+export default function SwitchButton(props) {
+
+  const [theme, setTheme] = useState('dark');
+
+  const changeTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
+  useEffect(() => {
+    const root = document.querySelector(':root');
+
+    const components = ['body-background', 'components-background', 'text-color', 'btn-color-hover', 'color-header', 'color-input'];
+    components.forEach((component) => {
+      root.style.setProperty(
+        `--${component}-default`,
+        `var(--${component}-${theme})`,
+      );
+    });
+  }, [theme]);
+
+
+
   return (
-    <FormGroup onClick={callback}>
+    <FormGroup onClick={changeTheme}>
       <FormControlLabel
         control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked/>}
-        label="Switch Theme"
+        label=""
       />
     </FormGroup>);
 }

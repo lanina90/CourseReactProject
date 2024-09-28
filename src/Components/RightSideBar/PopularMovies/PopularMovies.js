@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import style from '../Outline.module.scss';
+import style from '../styles.module.scss';
 import { NavLink } from 'react-router-dom';
 import CircleRating from '../../CircleRating/CircleRating';
 import CustomButton from '../../Buttons/Button/CustomButton';
@@ -12,7 +12,7 @@ const PopularMovies = () => {
 
   return (
     <>
-      <div className={style.container}>
+      <>
         <h3>POPULAR MOVIES </h3>
         {popMovie && popMovie.slice(0, 2).map((movie) =>
           <NavLink
@@ -40,7 +40,7 @@ const PopularMovies = () => {
               </div>
             </div>
           </NavLink>)}
-      </div>
+      </>
       <div className={style.btn}>
         <CustomButton name={'More'} path={'popMovies'}></CustomButton>
       </div>

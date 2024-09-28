@@ -9,11 +9,12 @@ import BestActorsSection from './BestActorsSection';
 import Search from '../Search/Search';
 import {useWindowWidth} from "../../hooks/useWindowWidth";
 import {useFetchMovies} from "../../hooks/useFetchMovies";
+import Header from "../Header/Header/Header";
+import {useDevice} from "../../hooks/useDevice";
 
 const HomeLayout = () => {
   SwiperCore.use([Navigation]);
 
-  const windowWidth = useWindowWidth();
   const fetchMoviesByType = useFetchMovies();
 
   useEffect(() => {
@@ -34,9 +35,6 @@ const HomeLayout = () => {
       <Helmet>
         <title>Latest Movie Trailers, Reviews & Overviews | Ultimate Cinema Guide</title>
       </Helmet>
-      {windowWidth >= 769 && windowWidth <= 1024 ? <div>
-        <Search></Search>
-        </div> : null}
       <div className={style.wrapper}>
         <MainBannerSection/>
         <h2>Trending Now </h2>
