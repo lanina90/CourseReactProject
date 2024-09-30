@@ -9,7 +9,7 @@ const MainBanner = ({ movie }) => {
       style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${image})` }}
       className={style.banner}>
       <div className={style.info}>
-        <h1>{movie.title}</h1>
+        <h1 className={style['info-title']}>{movie.title}</h1>
         <p>{movie.release_date.substring(0, 4)} - {movie.production_countries.map((country) => country.iso_3166_1).join(', ')} - {movie.runtime} min</p>
         <p>
           <span>Genres: </span>

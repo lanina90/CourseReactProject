@@ -1,0 +1,19 @@
+
+
+.reviews{
+
+  &-input{
+    font-family: Arial, sans-serif;
+    width: 100%;
+    background: transparent;
+    border-radius: 20px;
+    border-color: grey;
+    padding: 15px;
+    color: grey;
+
+    &::placeholder{
+      color: grey;
+      font-size: 16px;
+    }
+  }
+}
