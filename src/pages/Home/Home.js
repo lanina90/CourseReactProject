@@ -61,10 +61,9 @@ const Home = () => {
           sliderData={discover}
           slide={Banner}
         />
-        <h2>Trending Now </h2>
-        <Slider slide={MovieSlide} sliderData={trendingMovies}/>
-        <h2>Best Actors</h2>
+        <Slider slide={MovieSlide} sliderData={trendingMovies}  title={'Trending Now'}/>
         <Slider
+          title={'Best Actors'}
           sliderData={popularActors}
           slide={ActorSlide}
         />

@@ -23,7 +23,7 @@ const SliderWithWatchBtn = ({ name, category, id, bg, rating, displayAsPercentag
         <CircleRating
           rating={rating}
           displayAsPercentage={displayAsPercentage}
-          size={(isMobile || isTablet) ? 60 : 30}/>
+          size={(isMobile || isTablet) ? 30 : 60}/>
       </div>
       <div>
         <h2>{name}</h2>

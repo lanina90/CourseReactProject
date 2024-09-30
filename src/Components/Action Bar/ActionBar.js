@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Rating from '../Rating/Rating';
 import MoviePlayerModal from '../../pages/MoviePage/components/MoviePlayerModal/MoviePlayerModal';
 import {handleRatingChanged, handleToggleFavorite, handleToggleWatchList} from '../../utils/helperFunctions/ActionsFn';
+import {useAuth} from "../../hooks/useAuth";
 
 
 const ActionBar = ({ movieId, movie }) => {
@@ -34,7 +35,8 @@ const ActionBar = ({ movieId, movie }) => {
           size={30}
           data-tooltip-id="list"
           data-tooltip-content="Add to list"
-        />}/>
+        />}
+        />
       </div>
       <div>
         <ActionButton

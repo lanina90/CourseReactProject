@@ -3,7 +3,8 @@ import {NavLink} from "react-router-dom";
 import SliderItem from "../SliderItems/SliderItem";
 import style from "../SwiperSlide.module.scss";
 
-const MovieSlide = ({item}) => {const {title, poster_path, vote_average, id} = item
+const MovieSlide = ({item}) => {
+  const {title, poster_path, vote_average, id} = item;
 
   return (
     <NavLink

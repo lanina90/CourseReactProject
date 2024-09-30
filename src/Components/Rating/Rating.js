@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ReactStars from 'react-rating-stars-component/dist/react-stars';
 import styles from './styles.module.scss';
 import {useSelector} from 'react-redux';

@@ -22,7 +22,7 @@ export const fetchUserData = createAsyncThunk(
 
       return {
         email: userData.email,
-        id: userData.id,
+        id: userId,
         userName: userData.userName,
         date: userData.date,
       };

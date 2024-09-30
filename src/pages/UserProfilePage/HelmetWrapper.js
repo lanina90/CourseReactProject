@@ -6,7 +6,6 @@ export const HelmetWrapper = ({ title }) => {
     <>
       <Helmet>
         <title>{title}</title>
-        HelmetWrapper
       </Helmet>
     </>
   );

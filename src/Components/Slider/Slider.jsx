@@ -3,10 +3,11 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import SwiperCore, {Navigation} from 'swiper';
 import {useDevice} from "../../hooks/useDevice";
 import 'swiper/swiper-bundle.min.css';
+import Typography from "@mui/material/Typography";
 
 SwiperCore.use([Navigation]);
 
-const Slider = ({settings, slide, sliderData}) => {
+const Slider = ({settings, slide, sliderData,title}) => {
   const {isMobile, isTablet, isLaptop} = useDevice()
   if (!sliderData || !slide) return null;
   const SlideItem = slide;
@@ -24,20 +25,23 @@ const Slider = ({settings, slide, sliderData}) => {
   }, [settings, isMobile, isTablet, isLaptop]);
 
   return (
-    <Swiper
-      {...baseSettings}
-      modules={[Navigation]}
-    >
-      {sliderData?.map((item, index) => {
-        const key = item.id ?? index
-        return (
-          <SwiperSlide key={key}>
-            <SlideItem item={item}/>
-          </SwiperSlide>
-        )
-        }
-      )}
-    </Swiper>
+    <div>
+      {title && <Typography variant={"h4"} component={"h2"} style={{padding: "15px 0"}}>{title}</Typography>}
+      <Swiper
+        {...baseSettings}
+        modules={[Navigation]}
+      >
+        {sliderData?.map((item, index) => {
+            const key = item.id ?? index
+            return (
+              <SwiperSlide key={key}>
+                <SlideItem item={item}/>
+              </SwiperSlide>
+            )
+          }
+        )}
+      </Swiper>
+    </div>
   );
 };
 

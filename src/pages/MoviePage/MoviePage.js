@@ -46,12 +46,7 @@ const MoviePage = () => {
         <Typography variant="h4" component="h2">Top Billed Cast</Typography>
         <Slider sliderData={movie?.credits?.cast?.slice(0, 20)} slide={ActorSlide}/>
         <Reviews/>
-        {movie?.similar?.results.length > 1 &&
-          <>
-            <h2>Similar</h2>
-            <Slider sliderData={movie?.similar?.results} slide={MovieSlide}/>
-          </>
-        }
+        <Slider sliderData={movie?.similar?.results} slide={MovieSlide} title={'Similar'}/>
       </div>
     </>
   );
