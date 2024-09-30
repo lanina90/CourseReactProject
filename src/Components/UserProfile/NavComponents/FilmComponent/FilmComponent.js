@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../../UserProfile.module.scss';
-import CircleRating from '../../../CircleRating/CircleRating';
+import CircleRating from '../../../common/CircleRating/CircleRating';
 import ActionsComponent from '../ActionsComponent/ActionsComponent';
 import { NavLink } from 'react-router-dom';
 

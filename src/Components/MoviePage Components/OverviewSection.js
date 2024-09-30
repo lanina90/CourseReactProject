@@ -1,13 +1,16 @@
 import React from 'react';
 import style from '../../pages/MoviePage/MoviePage.module.scss';
-import CircleRating from '../CircleRating/CircleRating';
+import CircleRating from '../common/CircleRating/CircleRating';
+import {useDevice} from "../../hooks/useDevice";
 
-const OverviewSection = ({ movie,windowWidth }) => {
+const OverviewSection = ({ movie }) => {
+  const {isMobile, isTablet} = useDevice();
+
   return (
     <section className={style.overview}>
       <div className={style.rating}>
 
-        {windowWidth >= 360 && windowWidth < 768 ?  <CircleRating
+        {(isMobile || isTablet) ?  <CircleRating
             rating={movie.vote_average * 10}
             size={90}
             displayAsPercentage={true}

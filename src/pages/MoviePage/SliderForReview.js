@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import './SliderForReview.scss';
-import style from '../../Components/Home/HomeLayout.module.scss';
+import style from '../Home/styles.module.scss';
 import {useWindowWidth} from "../../hooks/useWindowWidth";
 
 

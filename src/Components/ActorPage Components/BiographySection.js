@@ -4,7 +4,7 @@ import CustomButton from '../Buttons/Button/CustomButton';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import { NavLink } from 'react-router-dom';
-import SliderItem from '../SliderItems/SliderItem';
+import SliderItem from '../Slider/SliderItems/SliderItem';
 
 const BiographySection = ({ actors, handleReadMoreClick, isExpanded }) => {
   let words = [];

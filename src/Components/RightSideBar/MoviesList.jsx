@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import style from "./styles.module.scss";
-import CircleRating from "../CircleRating/CircleRating";
+import CircleRating from "../common/CircleRating/CircleRating";
 
 const MoviesList = ({items, title}) => {
 

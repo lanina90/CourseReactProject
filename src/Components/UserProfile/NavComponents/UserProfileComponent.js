@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styles from '../UserProfile.module.scss';
-import CircleRating from '../../CircleRating/CircleRating';
+import CircleRating from '../../common/CircleRating/CircleRating';
 import Avatar from 'react-avatar';
 import {useSelector} from 'react-redux';
 import {useAuth} from '../../../hooks/useAuth';

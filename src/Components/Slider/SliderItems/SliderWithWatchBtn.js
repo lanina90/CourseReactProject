@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import CircleRating from '../CircleRating/CircleRating';
+import React from 'react';
+import CircleRating from '../../common/CircleRating/CircleRating';
 import { useNavigate } from 'react-router';
-import styles from '../Buttons/Button/CustomButton.module.scss';
-import {useWindowWidth} from "../../hooks/useWindowWidth";
+import styles from '../../Buttons/Button/CustomButton.module.scss';
+import {useDevice} from "../../../hooks/useDevice";
 
 const SliderWithWatchBtn = ({ name, category, id, bg, rating, displayAsPercentage }) => {
   const navigate = useNavigate();
-  const windowWidth = useWindowWidth();
+
+  const { isMobile, isTablet} = useDevice();
 
   const watchOnClickHandler = () => {
     navigate(`/movie/${id}`);
@@ -19,14 +20,10 @@ const SliderWithWatchBtn = ({ name, category, id, bg, rating, displayAsPercentag
         rgba(0,0,0,0)), url(https://image.tmdb.org/t/p/original${bg})`
       }}>
       <div className="userScore">
-        {windowWidth >= 360 && windowWidth < 600 ? <CircleRating
-            rating={rating}
-            displayAsPercentage={displayAsPercentage}
-            size={60}/> :
-          <CircleRating
-            rating={rating}
-            displayAsPercentage={displayAsPercentage}
-            size={100}/>}
+        <CircleRating
+          rating={rating}
+          displayAsPercentage={displayAsPercentage}
+          size={(isMobile || isTablet) ? 60 : 30}/>
       </div>
       <div>
         <h2>{name}</h2>

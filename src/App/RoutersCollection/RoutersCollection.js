@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from '../../router/Layout';
-import Home from '../../pages/Home';
+import Home from '../../pages/Home/Home';
 import DiscoveryPage from '../../pages/MoviesListPages/DiscoveryPage';
 import FreshMoviePage from '../../pages/MoviesListPages/FreshMoviePage';
 import TrendingMovie from '../../pages/MoviesListPages/TrendingMovie';
