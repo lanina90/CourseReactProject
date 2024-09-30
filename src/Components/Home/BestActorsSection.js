@@ -5,14 +5,12 @@ import style from './HomeLayout.module.scss';
 import SliderItem from '../SliderItems/SliderItem';
 import {useWindowWidth} from "../../hooks/useWindowWidth";
 import {useSelector} from "react-redux";
+import {useDevice} from "../../hooks/useDevice";
 
 const BestActorsSection = () => {
-  const windowWidth = useWindowWidth();
   const popularActors = useSelector((state) => state.movies.popularActors);
 
-  const isSmallScreen = windowWidth < 1280
-  const isMiddleScreen = windowWidth >= 1280 && windowWidth < 1440
-
+  const {isMobile, isTablet, isLaptop} = useDevice()
 
   return (
     <Swiper
@@ -20,7 +18,7 @@ const BestActorsSection = () => {
       tag="section"
       wrapperTag="ul"
       navigation
-      slidesPerView={isSmallScreen ? 3 : isMiddleScreen ? 4 : 5}
+      slidesPerView={isMobile ? 2 : (isTablet || isLaptop) ? 3 : 5}
       spaceBetween={10}>
       {
         popularActors?.map((actor) =>

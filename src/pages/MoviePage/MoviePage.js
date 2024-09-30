@@ -33,7 +33,7 @@ const MoviePage = () => {
   const ratings = useSelector((state) => state.ratings.ratings);
   const handleOpen = () => setOpenModal(true);
   const handleClose = () => setOpenModal(false);
-
+  console.log("movieId", movieId)
   useEffect(() => {
     async function fetchMovie() {
       try {

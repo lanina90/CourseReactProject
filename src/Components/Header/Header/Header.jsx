@@ -11,9 +11,15 @@ import {BiLogIn, BiLogOut} from "react-icons/bi";
 import { GrSearch } from "react-icons/gr";
 import {useDevice} from "../../../hooks/useDevice";
 import SwitchButton from "../../Buttons/SwitchButton/SwitchButton";
+import Search from "../../common/Search/Search";
+import { MdOutlineSearchOff } from "react-icons/md";
+import {useDispatch, useSelector} from "react-redux";
+import {setSearch} from "../../../redux/slices/searchSlice";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
+  const search = useSelector((state) => state.search.search);
   const { userName, isAuth, logout} = useAuth();
   const {isMobile, isTablet} = useDevice();
 
@@ -24,6 +30,10 @@ const Header = () => {
       document.body.style.overflow = '';
     }
   }, [isOpen]);
+
+  const searchToggleHandler = () => {
+    dispatch(setSearch(!search))
+  }
 
   return (
     <header className={styles.header}>
@@ -64,11 +74,14 @@ const Header = () => {
           }
         </div>
         <div className={styles['header-search']}>
-          <GrSearch size={30}/>
-        </div>
-        <SwitchButton/>
-      </div>
+          { search ? <MdOutlineSearchOff size={34} onClick={searchToggleHandler} /> : <GrSearch size={30} onClick={searchToggleHandler}/>}
 
+        </div>
+        {
+          (!isMobile && !isTablet) &&  <SwitchButton/>
+        }
+      </div>
+      {search &&  <Search searchToggleHandler={searchToggleHandler} /> }
     </header>
   );
 };

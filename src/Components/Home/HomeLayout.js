@@ -6,11 +6,7 @@ import { Helmet } from 'react-helmet';
 import MainBannerSection from './MainBannerSection';
 import TrendingNowSection from './TrendingNowSection';
 import BestActorsSection from './BestActorsSection';
-import Search from '../Search/Search';
-import {useWindowWidth} from "../../hooks/useWindowWidth";
 import {useFetchMovies} from "../../hooks/useFetchMovies";
-import Header from "../Header/Header/Header";
-import {useDevice} from "../../hooks/useDevice";
 
 const HomeLayout = () => {
   SwiperCore.use([Navigation]);
