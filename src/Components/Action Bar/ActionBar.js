@@ -7,7 +7,7 @@ import 'react-tooltip/dist/react-tooltip.css';
 import styles from './ActionBar.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import Rating from '../Rating/Rating';
-import MoviePlayerModal from '../MoviePlayerModal/MoviePlayerModal';
+import MoviePlayerModal from '../../pages/MoviePage/components/MoviePlayerModal/MoviePlayerModal';
 import {handleRatingChanged, handleToggleFavorite, handleToggleWatchList} from '../../utils/helperFunctions/ActionsFn';
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import style from '../../pages/MoviePage/MoviePage.module.scss';
-import CircleRating from '../common/CircleRating/CircleRating';
-import {useDevice} from "../../hooks/useDevice";
+import style from '../MoviePage.module.scss';
+import CircleRating from '../../../Components/common/CircleRating/CircleRating';
+import {useDevice} from "../../../hooks/useDevice";
 import Typography from "@mui/material/Typography";
 
 const OverviewSection = ({ movie }) => {

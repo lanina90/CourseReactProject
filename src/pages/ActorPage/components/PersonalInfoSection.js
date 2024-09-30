@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../../pages/ActorPage/ActorPage.module.scss';
+import style from '../ActorPage.module.scss';
 
 const PersonalInfoSection = ({ actors }) => {
 
